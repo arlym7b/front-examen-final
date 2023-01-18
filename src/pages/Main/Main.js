@@ -21,7 +21,7 @@ const Main = () => {
   const [aparcamientosFiltradas, setAparcamientosFiltradas] = useState([]);
   const [aparcamientosAux, setAparcamientosAux] = useState([]);
 
-  const getLogs = async () => {
+  const getAparcamientos = async () => {
     setAparcamientos([])
     setAparcamientosFiltradas([])
 
@@ -33,7 +33,7 @@ const Main = () => {
   }
 
   useEffect(() => {
-    getLogs()
+    getAparcamientos()
   }, [cargando]);
 
   /******************************** FILTROS ********************************/
@@ -81,7 +81,7 @@ const Main = () => {
             <Grid item md={3}>
               <SearchBar
                 style={Styler.pads}
-                placeholder="Buscar por nombre de parada"
+                placeholder="Buscar por nombre de aparcamiento"
                 onChange={(event) => handleSearch(event.target.value)}
                 searchBarWidth='720px'
               />
@@ -90,9 +90,9 @@ const Main = () => {
           </Grid>
 
           <Container maxWidth="xl" sx={{ mb: 3 }}>
-            <Titulo titulo="Mapa de lineas" />
+            <Titulo titulo="Mapa de aparcamientos" />
 
-            <Mapa lineas={aparcamientosFiltradas} />
+            <Mapa aparcamientos={aparcamientosFiltradas} />
 
           </Container>
         </Container>

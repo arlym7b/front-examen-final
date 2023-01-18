@@ -31,11 +31,11 @@ const Mapa = ({ aparcamientos }) => {
 
         {aparcamientos.map((aparcamiento, idx) =>
           <Marker
-            key={`linea-${idx}`}
+            key={`aparcamiento-${idx}`}
             position={[aparcamiento.latitud, aparcamiento.longitud]}
             icon={defaultIcon()}>
             <Popup>
-              {aparcamiento.nombreParada}
+              {aparcamiento.nombre}
             </Popup>
           </Marker>
         )}
