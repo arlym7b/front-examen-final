@@ -25,8 +25,8 @@ const Main = () => {
     setAparcamientos([])
     setAparcamientosFiltradas([])
 
-    const response = await axios.get("http://localhost:8000/aparcamientos");
-    //const response = await axios.get("https://url.deta.dev/aparcamientos");
+    //const response = await axios.get("http://localhost:8000/aparcamientos");
+    const response = await axios.get("https://o5gui6.deta.dev/aparcamientos");
     setCargando(false);
     setAparcamientos(response.data)
     setAparcamientosFiltradas(aparcamientos)
