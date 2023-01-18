@@ -17,19 +17,19 @@ import SearchBar from '../../components/common/SearchBar/SearchBar';
 const Main = () => {
   const navigate = useNavigate();
   const [cargando, setCargando] = useState(true);
-  const [lineas, setLineas] = useState([]);
-  const [lineasFiltradas, setLineasFiltradas] = useState([]);
-  const [lineasAux, setLineasAux] = useState([]);
+  const [aparcamientos, setAparcamientos] = useState([]);
+  const [aparcamientosFiltradas, setAparcamientosFiltradas] = useState([]);
+  const [aparcamientosAux, setAparcamientosAux] = useState([]);
 
   const getLogs = async () => {
-    setLineas([])
-    setLineasFiltradas([])
+    setAparcamientos([])
+    setAparcamientosFiltradas([])
 
-    // const response = await axios.get("http://localhost:8000/lineas");
-    const response = await axios.get("https://daniroura.deta.dev/lineas");
+    const response = await axios.get("http://localhost:8000/aparcamientos");
+    //const response = await axios.get("https://url.deta.dev/aparcamientos");
     setCargando(false);
-    setLineas(response.data)
-    setLineasFiltradas(lineas)
+    setAparcamientos(response.data)
+    setAparcamientosFiltradas(aparcamientos)
   }
 
   useEffect(() => {
@@ -47,19 +47,19 @@ const Main = () => {
     
     const lowercasedValue = value.toLowerCase().trim();
     if (lowercasedValue === "") {
-      setLineasFiltradas(lineas);
+      setAparcamientosFiltradas(aparcamientos);
       console.log("lowercasedValue es vacio")
 
     } else {
-      setLineasAux([])
+      setAparcamientosAux([])
 
-      lineas.forEach(element => {
+      aparcamientos.forEach(element => {
         if (element.nombreParada.toLowerCase().includes(lowercasedValue)) {
-          lineasAux.push(element)
+          aparcamientosAux.push(element)
           console.log(element.nombreParada)
         }
       });      
-      setLineasFiltradas(lineasAux) // Sin hacer set no se actualizan los componentes como el mapa
+      setAparcamientosFiltradas(aparcamientosAux) // Sin hacer set no se actualizan los componentes como el mapa
     };
   };
 
@@ -92,7 +92,7 @@ const Main = () => {
           <Container maxWidth="xl" sx={{ mb: 3 }}>
             <Titulo titulo="Mapa de lineas" />
 
-            <Mapa lineas={lineasFiltradas} />
+            <Mapa lineas={aparcamientosFiltradas} />
 
           </Container>
         </Container>

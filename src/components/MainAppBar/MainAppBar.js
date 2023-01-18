@@ -89,7 +89,7 @@ const MainAppBar = ({ login }) => {
               textDecoration: 'none',
             }}
           >
-            EMTInfo
+            ParkingNET
           </Typography>
 
 

@@ -12,7 +12,7 @@ function defaultIcon() {
   });
 };
 
-const Mapa = ({ lineas }) => {
+const Mapa = ({ aparcamientos }) => {
   const coordenadas = [36.72184282369917, -4.418403224132213];
 
   return (
@@ -29,13 +29,13 @@ const Mapa = ({ lineas }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {lineas.map((linea, idx) =>
+        {aparcamientos.map((aparcamiento, idx) =>
           <Marker
             key={`linea-${idx}`}
-            position={[linea.lat, linea.lon]}
+            position={[aparcamiento.latitud, aparcamiento.longitud]}
             icon={defaultIcon()}>
             <Popup>
-              {linea.nombreParada}
+              {aparcamiento.nombreParada}
             </Popup>
           </Marker>
         )}
